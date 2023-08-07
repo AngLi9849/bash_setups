@@ -1,0 +1,1 @@
+snakemake --rulegraph | dot -Tsvg -Gsize="11,8" -Gratio=fill -Gnodesep=0.2 -Granksep=0.01 -Nfontsize=20 > rulegraph.svg

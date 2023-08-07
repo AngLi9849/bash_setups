@@ -1,0 +1,9 @@
+snakemake --unlock ;
+rm STDIN.* snakejob.* ;
+qsub -pe openmp 1 -l h_rt=2:00:00 -l mem=6G -l rmem=4G <<DELIM
+#! /bin/bash
+# -V
+source ~/.bashrc
+conda activate snakemake
+snakemake -c512 --jobs 512 --touch --force --cluster "qsub -V -pe openmp {threads} -P gen2reg -l h_rt=0:40:00 -l mem={resources.mem} -l rmem={resources.rmem}" --default-resources --reason --use-conda --rerun-incomplete --latency-wait 50
+DELIM

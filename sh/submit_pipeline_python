@@ -1,0 +1,6 @@
+qsub -l h_rt=06:00:00 -l mem=10G -l rmem=6G <<DELIM
+#! /bin/bash
+# -V
+source ~/.bashrc
+python $*
+DELIM

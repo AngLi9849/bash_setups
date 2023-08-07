@@ -1,0 +1,11 @@
+qsub -pe openmp 1 -l h_rt=12:00:00 -l mem=6G -l rmem=3G <<DELIM
+#! /bin/bash
+# -V
+# Email notifications to me@somedomain.com
+#$ -M ali15@sheffield.ac.uk
+## Email notifications at the beginning, end or an abort.
+#$ -m abe#
+source ~/.bashrc
+conda activate deeptools
+computeMatrix reference-point -S data/mNETseq_bw/HCT116-1.bw_plus.bw -R data/unzipped_beds/HCT116-1.bed --verbose -b 500 -a 1000 -o HCT116-1-plus
+DELIM

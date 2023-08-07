@@ -1,0 +1,7 @@
+qsub -pe openmp 1 -P gen2reg -l h_rt=48:00:00 -l mem=3G -l rmem=3G <<DELIM
+#! /bin/bash
+# -V
+source ~/.bashrc
+conda activate snakemake
+snakemake -c64 --reason --use-conda --rerun-incomplete --latency-wait 500
+DELIM

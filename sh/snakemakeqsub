@@ -1,0 +1,1 @@
+snakemake -c12 --jobs 12 --cluster "qsub -V -pe openmp {threads} -P gen2reg -l h_rt=12:00:00 -l mem=12G -l rmem=12G"  --default-resources --reason --use-conda --rerun-incomplete --latency-wait 500

@@ -1,0 +1,8 @@
+qsub -pe openmp 4 -P gen2reg -l h_rt=2:00:00 -l mem=16G -l rmem=16G <<DELIM
+#! /bin/bash
+# -V
+source ~/.bashrc
+conda activate snakemake
+plotHeatmap -m results/metagene/by_internal_CPM_Aligned/FUSmAID_5PhIAA_1_lane1_proteincoding_scaled_sum.fwd.matrix.gz -o test.pdf
+DELIM
+

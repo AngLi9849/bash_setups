@@ -1,0 +1,10 @@
+snakemake --unlock ;
+rm STDIN.* snakejob* ;
+qsub -pe openmp 1 -l h_rt=2:00:00 -l mem=64G -l rmem=16G <<DELIM
+#! /bin/bash
+# -V
+source ~/.bashrc
+conda activate snakemake
+snakemake -nr > nr.txt
+snakemake -nr --rerun-incomplete --verbose --debug-dag > debug.txt
+DELIM

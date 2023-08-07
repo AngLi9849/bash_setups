@@ -1,0 +1,12 @@
+qsub -pe openmp 1 -l h_rt=48:00:00 -l mem=64G -l rmem=16G <<DELIM
+#! /bin/bash
+# -V
+source ~/.bashrc
+conda activate snakemake
+cd /fastdata/mbp19al/Yiliang_Ding_Collab
+#snakemake -c512 --jobs 512 --cluster "qsub -V -pe openmp {threads} -P gen2reg -l h_rt=12:00:00 -l mem={resources.mem} -l rmem={resources.rmem}" --reason --use-conda --rerun-incomplete -T 3 --latency-wait 50
+#fasterq-dump -p -O test SRR7618803
+wget -O test1.gz ftp.sra.ebi.ac.uk/vol1/fastq/SRR761/003/SRR7618803/SRR7618803.fastq.gz
+
+DELIM
+

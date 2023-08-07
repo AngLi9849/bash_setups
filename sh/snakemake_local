@@ -1,0 +1,3 @@
+snakemake --unlock
+rm STDIN.* snakejob.*
+snakemake -c1 --default-resources --reason --use-conda --rerun-incomplete
