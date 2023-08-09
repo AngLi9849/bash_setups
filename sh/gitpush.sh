@@ -12,3 +12,12 @@ git add --all config/
 git commit -m "update"
 git push -u remote master
 
+cd ~/
+git add --all sh/
+git add --all aliases/
+git add --all .bashrc
+git add --all .bashrc_submit
+git commit -m "update"
+git push -u remote master
+
+
