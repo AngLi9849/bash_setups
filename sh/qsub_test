@@ -1,8 +1,12 @@
-qsub -pe openmp 4 -P gen2reg -l h_rt=2:00:00 -l mem=16G -l rmem=16G <<DELIM
+qsub -pe openmp 4 -P gen2reg -l h_rt=6:00:00 -l mem=64G -l rmem=64G <<DELIM
 #! /bin/bash
 # -V
 source ~/.bashrc
 conda activate snakemake
-plotHeatmap -m results/metagene/by_internal_CPM_Aligned/FUSmAID_5PhIAA_1_lane1_proteincoding_scaled_sum.fwd.matrix.gz -o test.pdf
+cd /fastdata/mbp19al/Yiliang_Ding_Collab
+#wget https://objectstorage.uk-london-1.oraclecloud.com/p/tW_Sq0TCz4eoHkS4-IoiSxlYxY6kftYiSZPSGoGCIT3_9W3jIo1gs7LV1Nn3onkD/n/cnyr09qj8zbo/b/england-data/o/out/CP2020033000011/X204SC23083252-Z01-F001/X204SC23083252-Z01-F001.tar -O UL1_overexpress_Seq.tar
+#wget https://objectstorage.uk-london-1.oraclecloud.com/p/tW_Sq0TCz4eoHkS4-IoiSxlYxY6kftYiSZPSGoGCIT3_9W3jIo1gs7LV1Nn3onkD/n/cnyr09qj8zbo/b/england-data/o/out/CP2020033000011/X204SC23083252-Z01-F001/MD5.txt -O UL1_OE_MD5.txt
+#wget https://objectstorage.uk-london-1.oraclecloud.com/p/tW_Sq0TCz4eoHkS4-IoiSxlYxY6kftYiSZPSGoGCIT3_9W3jIo1gs7LV1Nn3onkD/n/cnyr09qj8zbo/b/england-data/o/out/CP2020033000011/X204SC23083252-Z01-F001/checkSize.xls -O UL1_OE_checksum.xls
+tar -xf UL1_overexpress_Seq.tar
 DELIM
 
