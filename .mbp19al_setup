@@ -1,0 +1,56 @@
+# User specific environment and startup programs
+USER=`whoami`
+
+export USER
+
+HOSTNAME=`hostname | cut -d. -f1` # without domain name
+
+#. ~/sh/path-extend.bash    # defines  path_append and path_extend
+#. ~/.paths
+#. ~/.aliases
+ 
+unset FIGNORE				# i.e. show everything
+export GLOBIGNORE=/			# '*' _also_ matches .login
+no_exit_on_failed_exec=1		# prevents dying from failing exec
+notify=1				# immediately warn exiting processes
+command_oriented_history=1		# multi-line command == one entry
+auto_resume=1				# restart stopped job by name
+
+set -o ignoreeof			# don't logout on ^D 
+set +o noclobber			# do not prevents redirection 
+set -o physical				# pwd uses physical path (i.e, one
+                                        # without symlinks
+
+umask 002				# -rw-rw-r-
+
+
+## load modules
+module purge
+export MODULEPATH=/shared/sudlab1/General/modulefiles:$MODULEPATH
+module load apps/python/conda
+
+
+echo testing location
+
+
+case $HOSTNAME in
+     sharc-node*)
+     echo on SHARC node
+     #source /home/mbp19al/sh/activate_snakemake.sh
+     #source activate /shared/sudlab1/General/apps/conda/conda-install/envs/cgat-f
+     module load bio/all apps/java/jdk1.8.0_102/binary bio/salmon/0.11.4
+     source /home/mbp19al/aliases/aliases.sh
+     export PATH="/home/mbp19al/.local/bin:$PATH"
+     ;;
+
+esac
+
+
+
+## read both /etc/inputrc and ~/.inputrc
+unset INPUTRC
+
+export DRMAA_LIBRARY_PATH=/usr/local/sge/live/lib/lx-amd64/libdrmaa.so.1.0
+pwd
+
+#conda activate snakemake
