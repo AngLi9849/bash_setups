@@ -3,6 +3,7 @@
 cd /fastdata/mbp19al/SeqSnake/
 git add --all workflow/
 git add --all config/
+git add --all new_config/
 git commit -m "update"
 git push -u SeqSnake main
 
